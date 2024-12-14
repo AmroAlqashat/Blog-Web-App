@@ -143,7 +143,7 @@ $("#search-bar").off('input').on('input', function(event) {
                     else {
                         previewTitle = data.title;
                     }
-                const html = `<li>${previewTitle}</li>`;
+                const html = `<li class="search-result-item" value="${response.filteredData[0].key}">${previewTitle}</li>`;
                 searchResults.append(html);
             });
 
@@ -171,6 +171,23 @@ $("#search-bar").off('input').on('input', function(event) {
         }
     });
 });
+
+$(document).on('click', '.search-result-item', function(){
+    const blogKey = $(this).attr('value');
+    $.ajax({
+        url:'/view-blog-server',
+        method: 'POST',
+        data:{
+            dataKey: blogKey
+        },
+        success: function(response){
+            window.location.href = response.redirectUrl;
+        },
+        error: function(error){
+            console.log("Error viewing blog", error);
+        }
+    })
+})
 
 
 

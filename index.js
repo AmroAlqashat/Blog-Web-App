@@ -99,8 +99,6 @@ app.post('/deleteBlog', (req, res) => {
 
 app.post('/show-blog-in-edit-page', (req, res) => {
     try {
-        // const APIresponse = await axios.patch(BLOG_FUNC_API_URL+`edit-blog/${req.body.dataKey}`);
-        // const blogData = APIresponse.data;
         const btnKey = req.body.dataKey;
         let rAllBlogData = [];
         const allBlogData = readBlogData(rAllBlogData);
@@ -145,6 +143,7 @@ app.post('/search-func', (req, res) => {
     const allBlogData = readBlogData(rAllBlogData);
     const input = (req.body.input).toLowerCase();
     const filteredData = allBlogData.filter(data => data.title.toLowerCase().includes(input));
+    console.log(filteredData[0].key)
     res.json({ filteredData });
 });
 
