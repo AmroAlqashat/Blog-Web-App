@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div id="header">
+        <ul id="nav-bar">
+
+                <form class="nav-buttons-form" method="get" action="/header-buttons">
+                    <button class="removeBtnStruc nav-item-btn myBlogsTab-js" name="btn" value="viewBlogs">My Blogs</button>
+                    <button class="removeBtnStruc nav-item-btn" name="btn" value="addBlog">Add Blog</button>
+                </form>
+                <div class="search-barANDsearch-results">
+                    <li><input type="search" placeholder="Search for blog" id="search-bar"></li>
+                    <div>
+                        <ul id="search-results"></ul>
+                    </div>
+                </div>
+                <form class="nav-buttons-form">
+                    <!-- <button class="removeBtnStruc nav-item-btn">Comments</button> -->
+                    <img src="/images/avatar-3814049_640.png" class="profile-img">        
+                </form>
+        </ul>
+    </div>
+
+</body>
+</html>

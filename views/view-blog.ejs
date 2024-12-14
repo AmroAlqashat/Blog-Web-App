@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veiw</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+
+    <%- include('header') %>
+    
+
+    <main>
+      <div style="display: flex; justify-content: center;">
+        <div class="viewContainer">
+            <% if (blog) { %>
+            <div class="title-view">
+                <h1 style="border-bottom: #3056a0 3px solid; padding-bottom: 5px;"><%= blog.title %></h1>
+            </div>
+            <div class="content-view-div">
+                <p class="content-view"><%= blog.content %></p>
+            </div>
+            <% } else { %>
+                <p>No blog found.</p>
+            <% } %>
+        </div>
+      </div>
+    </main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

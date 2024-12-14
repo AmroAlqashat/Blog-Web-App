@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    
+      <%- include('header') %> 
+
+<main>
+    <table class="blogs">  
+        <% if (allBlogData.length != 0)  {%>
+            <% allBlogData.reverse().forEach((blog) => { %>
+                <tr>
+                    <td class="info-blog">
+                        <% let  previewTitle; %>
+                        <% if (blog.title.length > 16) {%>
+                            <% previewTitle = blog.title.slice(0, 16) %>
+                            <% previewTitle = previewTitle + "..." %>
+                        <%} else {%>
+                            <% previewTitle = blog.title }%>
+                    <p class="title-blog"><%= previewTitle %></p>
+                        <button class="delelteBlogBtn" data-key="<%= blog.key %>">Delete Blog</button>
+                        <button class="editBlogBtn" data-key="<%= blog.key %>">Edit Blog</button>
+                        
+                    </td>
+                    <td class="main-blog">
+                        <div>
+                            <% let  previewContent; %>
+                            <% if (blog.content.length > 40) {%>
+                                <% previewContent = blog.content.slice(0, 40) %>
+                            <%} else {%>
+                                <% previewContent = blog.content }%>
+                            <p style="padding-left: 30px; font-size: 1.4rem;"><%= previewContent %><span class="viewBlogParagraph">... <span>
+                                    <button class="viewBlogBtn" data-key="<%= blog.key %>">View Blog</button>
+                                </span></span></p>
+                            <ul style="display: flex; column-gap: 40px; padding-left: 30px;">  
+                                <% console.log("blog",blog.edited_date) %>
+                                <% if(blog.edited_date){ %>
+                                    <li>Edited: <%= blog.edited_date %></li>
+                                <% }else{ %>
+                                <li>Added: <%= blog.date %></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </td>
+                </tr> 
+            <% }); %>
+        <%} else {%>
+            <div class="notFound-result">
+                <img src="/images/1400397-200.png">
+                <h1>No blog has been added.</h1>
+            </div>
+        <% } %>
+    </table>
+</main>
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
